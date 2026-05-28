@@ -3,1015 +3,378 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kidbox — Une activité en 3 clics</title>
+<title>Kidbox — 30 activités gratuites pour enfants</title>
+<meta name="description" content="Trouvez en 3 clics une activité adaptée à l'âge de votre enfant. 30 activités gratuites pour parents et nounous : créatif, cuisine, éducatif, plein air, imaginaire.">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Cabinet+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --orange:  #FF6B2B;
-  --jaune:   #FFD93D;
-  --vert:    #06D6A0;
-  --bleu:    #118AB2;
-  --rose:    #FF6B9D;
-  --fond:    #FFF8F0;
-  --texte:   #1A1A2E;
-  --gris:    #6E6E8A;
-  --blanc:   #FFFFFF;
+  --orange: #FF6B2B; --jaune: #FFD93D; --vert: #06D6A0;
+  --bleu: #118AB2; --rose: #FF6B9D; --fond: #FFF8F0;
+  --texte: #1A1A2E; --gris: #6E6E8A; --blanc: #FFFFFF;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
+body { font-family: 'Cabinet Grotesk', sans-serif; background: var(--fond); color: var(--texte); }
 
-body {
-  font-family: 'Cabinet Grotesk', sans-serif;
-  background: var(--fond);
-  color: var(--texte);
-  overflow-x: hidden;
-}
-
-/* ── BLOBS décoratifs ── */
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.18;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ══════════════════════════════════
-   NAV
-══════════════════════════════════ */
+/* NAV */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.4rem clamp(1.5rem, 5vw, 5rem);
-  position: sticky;
-  top: 0;
-  background: rgba(255,248,240,0.88);
-  backdrop-filter: blur(12px);
-  z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem clamp(1rem, 4vw, 3rem);
+  background: rgba(255,248,240,0.92); backdrop-filter: blur(12px);
+  position: sticky; top: 0; z-index: 100;
   border-bottom: 1px solid rgba(255,107,43,0.1);
 }
+.logo { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--orange); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-box { width: 32px; height: 32px; background: var(--orange); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; }
+.nav-badge { background: #E6FBF4; color: #047857; font-size: 0.78rem; font-weight: 700; padding: 5px 12px; border-radius: 100px; }
 
-.logo {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--orange);
-  letter-spacing: -0.03em;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.logo-icon {
-  width: 34px; height: 34px;
-  background: var(--orange);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
-  color: white;
-}
-
-.nav-right { display: flex; align-items: center; gap: 12px; }
-.nav-link { font-size: 0.9rem; color: var(--gris); text-decoration: none; font-weight: 500; }
-.nav-link:hover { color: var(--orange); }
-.nav-cta {
-  background: var(--orange);
-  color: white;
-  padding: 9px 20px;
-  border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 4px 14px rgba(255,107,43,0.3);
-}
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,107,43,0.4); }
-
-/* ══════════════════════════════════
-   HERO
-══════════════════════════════════ */
+/* HERO */
 .hero {
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  padding: 5rem clamp(1.5rem, 5vw, 5rem) 4rem;
-  position: relative;
-  overflow: hidden;
+  text-align: center; padding: 4rem clamp(1rem, 4vw, 3rem) 3rem;
+  background: linear-gradient(180deg, #FFF8F0 0%, #FFF0E8 100%);
+  position: relative; overflow: hidden;
 }
+.hero::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 350px; height: 350px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,217,61,0.25) 0%, transparent 70%);
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -60px; left: -60px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(6,214,160,0.2) 0%, transparent 70%);
+}
+.hero-emoji { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: bounce 2s ease-in-out infinite; }
+.hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem; position: relative; z-index: 1; }
+.hero h1 span { color: var(--orange); }
+.hero-desc { font-size: 1.05rem; color: var(--gris); max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; position: relative; z-index: 1; }
+.hero-stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; position: relative; z-index: 1; }
+.hstat { text-align: center; }
+.hstat-num { font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--orange); }
+.hstat-label { font-size: 0.78rem; color: var(--gris); }
 
-.blob-1 { width: 500px; height: 500px; background: var(--orange); top: -100px; right: -100px; }
-.blob-2 { width: 300px; height: 300px; background: var(--vert); bottom: 50px; left: -80px; }
+/* FILTRES */
+.filters-section { background: white; padding: 1.5rem clamp(1rem, 4vw, 3rem); border-bottom: 1px solid #F0E8DC; position: sticky; top: 65px; z-index: 90; }
+.search-wrap { position: relative; max-width: 500px; margin: 0 auto 1.25rem; }
+.search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 1rem; color: var(--gris); }
+#search { width: 100%; padding: 12px 16px 12px 40px; border: 2px solid #F0E8DC; border-radius: 100px; font-size: 0.95rem; font-family: 'Cabinet Grotesk', sans-serif; background: var(--fond); color: var(--texte); outline: none; transition: border-color 0.2s; }
+#search:focus { border-color: var(--orange); }
+#search::placeholder { color: #B0A89E; }
 
-.hero-inner {
+.filter-rows { display: flex; flex-direction: column; gap: 10px; }
+.filter-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.filter-row-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris); min-width: 60px; }
+.pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.pill {
+  padding: 6px 14px; border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; border: 1.5px solid #E8E0D8; background: white; color: var(--gris);
+  transition: all 0.15s; white-space: nowrap;
+}
+.pill:hover { border-color: var(--orange); color: var(--orange); }
+.pill.active { background: var(--orange); color: white; border-color: var(--orange); }
+.pill-all.active { background: var(--texte); border-color: var(--texte); }
+
+.results-count { font-size: 0.85rem; color: var(--gris); margin-top: 10px; }
+.results-count span { color: var(--orange); font-weight: 700; }
+
+/* GRID ACTIVITÉS */
+.activities-section { padding: 2rem clamp(1rem, 4vw, 3rem); }
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  position: relative; z-index: 1;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: white;
-  border: 1.5px solid #FFE0CC;
-  border-radius: 100px;
-  padding: 6px 14px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--orange);
-  margin-bottom: 1.5rem;
-  animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) both;
-}
-
-h1 {
-  font-family: 'Nunito', sans-serif;
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 900;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  margin-bottom: 1.25rem;
-  animation: fadeUp 0.6s 0.1s ease both;
-}
-
-.h1-accent { color: var(--orange); position: relative; display: inline-block; }
-.h1-accent::after {
-  content: '';
-  position: absolute;
-  bottom: 2px; left: 0; right: 0;
-  height: 6px;
-  background: var(--jaune);
-  border-radius: 3px;
-  z-index: -1;
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: underlineIn 0.5s 0.6s ease forwards;
-}
-
-.hero-desc {
-  font-size: 1.05rem;
-  color: var(--gris);
-  line-height: 1.7;
-  max-width: 440px;
-  margin-bottom: 2rem;
-  font-weight: 400;
-  animation: fadeUp 0.6s 0.2s ease both;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  animation: fadeUp 0.6s 0.3s ease both;
-}
-
-.btn-orange {
-  background: var(--orange);
-  color: white;
-  padding: 14px 28px;
-  border-radius: 100px;
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 6px 20px rgba(255,107,43,0.35);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.btn-orange:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,107,43,0.4); }
-
-.btn-ghost {
-  background: white;
-  color: var(--texte);
-  padding: 14px 28px;
-  border-radius: 100px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  border: 1.5px solid #E8E0D8;
-  transition: border-color 0.15s;
-}
-.btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
-
-/* Hero cards flottantes */
-.hero-visual {
-  position: relative;
-  height: 480px;
-  animation: fadeUp 0.7s 0.25s ease both;
-}
-
-.float-card {
-  position: absolute;
-  background: white;
-  border-radius: 20px;
-  padding: 1rem 1.25rem;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-  animation: float var(--dur, 4s) ease-in-out infinite var(--delay, 0s);
-}
-
-.fc-main {
-  top: 30px; left: 0; right: 0;
-  margin: 0 auto;
-  width: 280px;
-  --dur: 5s; --delay: 0s;
-}
-.fc-2 { bottom: 80px; left: 10px; width: 180px; --dur: 4.5s; --delay: -1s; }
-.fc-3 { top: 150px; right: 0; width: 160px; --dur: 6s; --delay: -2s; }
-
-.fc-emoji { font-size: 2.2rem; margin-bottom: 8px; }
-.fc-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--texte); margin-bottom: 4px; }
-.fc-sub { font-size: 0.75rem; color: var(--gris); }
-.fc-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
-.fc-tag {
-  font-size: 0.65rem;
-  padding: 3px 8px;
-  border-radius: 100px;
-  font-weight: 600;
-}
-.t-orange { background: #FFF0E8; color: var(--orange); }
-.t-vert { background: #E6FBF4; color: #059669; }
-.t-bleu { background: #E6F4FF; color: var(--bleu); }
-.t-rose { background: #FFE8F2; color: var(--rose); }
-
-.fc-stars { color: var(--jaune); font-size: 0.8rem; margin-top: 6px; }
-.fc-name { font-size: 0.7rem; color: var(--gris); margin-top: 2px; }
-
-/* ══════════════════════════════════
-   STATS BAND
-══════════════════════════════════ */
-.stats-band {
-  background: var(--texte);
-  padding: 2rem clamp(1.5rem, 5vw, 5rem);
-  display: flex;
-  justify-content: center;
-  gap: clamp(2rem, 6vw, 5rem);
-  flex-wrap: wrap;
-}
-.stat { text-align: center; }
-.stat-num {
-  font-family: 'Nunito', sans-serif;
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: var(--jaune);
-  letter-spacing: -0.03em;
-}
-.stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 2px; }
-
-/* ══════════════════════════════════
-   COMMENT ÇA MARCHE
-══════════════════════════════════ */
-.how {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
-  position: relative;
-  overflow: hidden;
-}
-.blob-3 { width: 400px; height: 400px; background: var(--jaune); top: -80px; left: -100px; }
-
-.section-eyebrow {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 0.75rem;
-}
-
-.how h2, .cats h2, .pricing h2, .testimonials h2 {
-  font-family: 'Nunito', sans-serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 3rem;
-  max-width: 520px;
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  position: relative; z-index: 1;
-}
-
-.step-card {
-  background: white;
-  border-radius: 24px;
-  padding: 2rem;
-  position: relative;
-  border: 1.5px solid #F0E8DC;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.step-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
-
-.step-bubble {
-  width: 52px; height: 52px;
-  border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-.sb-1 { background: #FFF0E8; }
-.sb-2 { background: #E6FBF4; }
-.sb-3 { background: #FFF8DC; }
-
-.step-num-label {
-  position: absolute;
-  top: 1.5rem; right: 1.5rem;
-  font-family: 'Nunito', sans-serif;
-  font-size: 3rem;
-  font-weight: 900;
-  color: #F5EEE6;
-  line-height: 1;
-}
-
-.step-card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.5rem; }
-.step-card p { font-size: 0.875rem; color: var(--gris); line-height: 1.65; }
-
-/* ══════════════════════════════════
-   CATÉGORIES
-══════════════════════════════════ */
-.cats {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
-  background: white;
-}
-
-.cats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-}
-
-.cat-card {
-  border-radius: 20px;
-  padding: 1.5rem 1.25rem;
-  text-align: center;
-  transition: transform 0.2s;
-  cursor: pointer;
-}
-.cat-card:hover { transform: scale(1.04); }
-
-.cat-card .cat-emoji { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
-.cat-card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
-.cat-card p { font-size: 0.78rem; opacity: 0.7; line-height: 1.4; }
-
-.cc-1 { background: #FFF0E8; color: #C4400A; }
-.cc-2 { background: #E6FBF4; color: #047857; }
-.cc-3 { background: #FFF8DC; color: #92620A; }
-.cc-4 { background: #E6F4FF; color: #0369A1; }
-.cc-5 { background: #FFE8F2; color: #9D174D; }
-
-/* ══════════════════════════════════
-   FILTRE DÉMO INTERACTIF
-══════════════════════════════════ */
-.demo {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
-  background: var(--texte);
-  position: relative;
-  overflow: hidden;
-}
-.blob-4 { width: 350px; height: 350px; background: var(--rose); bottom: -80px; right: -80px; opacity: 0.12; }
-
-.demo .section-eyebrow { color: var(--jaune); }
-.demo h2 { color: white; }
-
-.demo-box {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 24px;
-  padding: 2rem;
-  max-width: 680px;
-  position: relative; z-index: 1;
-}
-
-.filter-row { margin-bottom: 1.25rem; }
-.filter-label { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
-.filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-
-.fpill {
-  padding: 8px 16px;
-  border-radius: 100px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.6);
-  border: 1.5px solid rgba(255,255,255,0.1);
-  transition: all 0.15s;
-}
-.fpill:hover { background: rgba(255,255,255,0.14); color: white; }
-.fpill.on { background: var(--orange); color: white; border-color: var(--orange); }
-
-.demo-btn {
-  background: var(--jaune);
-  color: var(--texte);
-  border: none;
-  padding: 14px 28px;
-  border-radius: 100px;
-  font-size: 1rem;
-  font-weight: 800;
-  cursor: pointer;
-  margin-top: 1.25rem;
-  font-family: 'Nunito', sans-serif;
-  transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 4px 16px rgba(255,217,61,0.3);
-}
-.demo-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,217,61,0.4); }
-
-.result-card {
-  margin-top: 1.5rem;
-  background: white;
-  border-radius: 16px;
-  padding: 1.5rem;
-  display: none;
-  animation: popIn 0.4s cubic-bezier(.34,1.56,.64,1) both;
-}
-.result-card.show { display: block; }
-
-.result-emoji { font-size: 2.5rem; margin-bottom: 0.75rem; }
-.result-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.15rem; color: var(--texte); margin-bottom: 4px; }
-.result-meta { font-size: 0.8rem; color: var(--gris); margin-bottom: 12px; }
-.result-steps { list-style: none; }
-.result-steps li {
-  display: flex; gap: 10px; align-items: flex-start;
-  font-size: 0.85rem; color: var(--texte); line-height: 1.5;
-  padding: 6px 0; border-bottom: 1px solid #F5F0EA;
-}
-.result-steps li:last-child { border-bottom: none; }
-.rs-num {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--orange); color: white;
-  font-size: 0.7rem; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; margin-top: 1px;
-}
-
-/* ══════════════════════════════════
-   PRICING
-══════════════════════════════════ */
-.pricing {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
-  background: var(--fond);
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 900px;
-}
-
-.price-card {
-  background: white;
-  border-radius: 24px;
-  padding: 2rem;
-  border: 2px solid #F0E8DC;
-  position: relative;
-  transition: transform 0.2s;
-}
-.price-card:hover { transform: translateY(-4px); }
-.price-card.featured {
-  background: var(--orange);
-  color: white;
-  border-color: var(--orange);
-  box-shadow: 0 20px 50px rgba(255,107,43,0.3);
-}
-.featured-badge {
-  position: absolute;
-  top: -14px; left: 50%; transform: translateX(-50%);
-  background: var(--jaune);
-  color: var(--texte);
-  font-size: 0.72rem;
-  font-weight: 800;
-  padding: 4px 14px;
-  border-radius: 100px;
-  white-space: nowrap;
-  font-family: 'Nunito', sans-serif;
-}
-
-.price-name { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.5rem; }
-.price-amount {
-  font-family: 'Nunito', sans-serif;
-  font-size: 3rem;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 0.25rem;
-}
-.price-sub { font-size: 0.8rem; opacity: 0.6; margin-bottom: 1.5rem; }
-
-.price-features { list-style: none; margin-bottom: 1.5rem; }
-.price-features li {
-  display: flex; gap: 8px; align-items: flex-start;
-  font-size: 0.875rem; line-height: 1.5;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-.price-card.featured .price-features li { border-bottom-color: rgba(255,255,255,0.15); }
-.price-features li:last-child { border-bottom: none; }
-.pf-check { flex-shrink: 0; font-size: 0.9rem; }
-.pf-x { flex-shrink: 0; font-size: 0.9rem; opacity: 0.35; }
-
-.price-btn {
-  display: block;
-  text-align: center;
-  padding: 13px;
-  border-radius: 100px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: all 0.15s;
-  font-family: 'Nunito', sans-serif;
-}
-.price-btn-ghost { border: 2px solid #E8E0D8; color: var(--texte); }
-.price-btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
-.price-btn-white { background: white; color: var(--orange); }
-.price-btn-white:hover { background: var(--jaune); color: var(--texte); }
-
-/* ══════════════════════════════════
-   TÉMOIGNAGES
-══════════════════════════════════ */
-.testimonials {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
-  background: white;
-}
-
-.testi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.25rem;
 }
 
-.testi-card {
-  background: var(--fond);
-  border-radius: 20px;
-  padding: 1.5rem;
-  border: 1.5px solid #F0E8DC;
+/* CARD */
+.card {
+  background: white; border-radius: 20px; padding: 1.5rem;
+  border: 1.5px solid #F0E8DC; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex; flex-direction: column;
 }
-.testi-stars { font-size: 1rem; color: var(--jaune); margin-bottom: 0.75rem; }
-.testi-text { font-size: 0.9rem; color: var(--texte); line-height: 1.65; margin-bottom: 1rem; font-style: italic; }
-.testi-author { display: flex; align-items: center; gap: 10px; }
-.testi-avatar {
-  width: 38px; height: 38px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
-}
-.av-1 { background: #FFF0E8; }
-.av-2 { background: #E6FBF4; }
-.av-3 { background: #FFF8DC; }
-.testi-name { font-size: 0.85rem; font-weight: 700; color: var(--texte); }
-.testi-role { font-size: 0.75rem; color: var(--gris); }
+.card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+.card.hidden { display: none; }
 
-/* ══════════════════════════════════
-   CTA FINAL
-══════════════════════════════════ */
-.cta-final {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
+.card-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.card-emoji { font-size: 2.2rem; flex-shrink: 0; }
+.card-meta { flex: 1; }
+.card-titre { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; color: var(--texte); margin-bottom: 4px; line-height: 1.3; }
+.card-info { font-size: 0.75rem; color: var(--gris); }
+
+.card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.ctag { font-size: 0.68rem; padding: 3px 9px; border-radius: 100px; font-weight: 600; }
+.ctag-creatif { background: #FFF0E8; color: #C4400A; }
+.ctag-cuisine { background: #FFF8DC; color: #92620A; }
+.ctag-educatif { background: #E6F4FF; color: #0369A1; }
+.ctag-plein_air { background: #E6FBF4; color: #047857; }
+.ctag-imaginaire { background: #FFE8F2; color: #9D174D; }
+
+.card-materiel { font-size: 0.8rem; color: var(--gris); line-height: 1.5; margin-bottom: 12px; }
+.card-materiel strong { color: var(--texte); font-weight: 600; }
+
+.card-btn {
+  margin-top: auto; background: var(--fond); border: none; border-radius: 100px;
+  padding: 9px 16px; font-size: 0.82rem; font-weight: 700; color: var(--orange);
+  cursor: pointer; font-family: 'Nunito', sans-serif; transition: background 0.15s;
   text-align: center;
-  background: var(--fond);
-  position: relative;
-  overflow: hidden;
 }
-.blob-5 { width: 400px; height: 400px; background: var(--rose); top: -100px; right: -100px; }
-.blob-6 { width: 300px; height: 300px; background: var(--vert); bottom: -80px; left: -80px; }
+.card-btn:hover { background: #FFE8D8; }
 
-.cta-final h2 {
-  font-family: 'Nunito', sans-serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 1rem;
-  position: relative; z-index: 1;
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(26,26,46,0.6);
+  z-index: 200; display: flex; align-items: center; justify-content: center;
+  padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.2s;
 }
-.cta-final p {
-  font-size: 1rem;
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: white; border-radius: 24px; padding: 2rem;
+  max-width: 540px; width: 100%; max-height: 90vh; overflow-y: auto;
+  transform: scale(0.9); transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+}
+.modal-overlay.open .modal { transform: scale(1); }
+
+.modal-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 1.25rem; }
+.modal-emoji { font-size: 3rem; }
+.modal-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--texte); margin-bottom: 4px; }
+.modal-subtitle { font-size: 0.82rem; color: var(--gris); }
+.modal-close {
+  margin-left: auto; background: var(--fond); border: none; border-radius: 50%;
+  width: 34px; height: 34px; font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   color: var(--gris);
-  max-width: 440px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.6;
-  position: relative; z-index: 1;
 }
+.modal-close:hover { background: #F0E8DC; }
 
-.email-form {
-  display: flex;
-  gap: 10px;
-  max-width: 420px;
-  margin: 0 auto;
-  position: relative; z-index: 1;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.email-form input {
-  flex: 1;
-  min-width: 200px;
-  padding: 14px 20px;
-  border-radius: 100px;
-  border: 2px solid #E8E0D8;
-  font-size: 0.9rem;
-  background: white;
-  color: var(--texte);
-  outline: none;
-  font-family: 'Cabinet Grotesk', sans-serif;
-}
-.email-form input:focus { border-color: var(--orange); }
-.email-form button {
-  background: var(--orange);
-  color: white;
-  border: none;
-  padding: 14px 24px;
-  border-radius: 100px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: 'Nunito', sans-serif;
-  transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 4px 16px rgba(255,107,43,0.3);
-}
-.email-form button:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,107,43,0.4); }
+.modal-section { margin-bottom: 1.25rem; }
+.modal-section-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.steps-list { list-style: none; }
+.steps-list li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid #F5EEE6; font-size: 0.9rem; color: var(--texte); line-height: 1.5; }
+.steps-list li:last-child { border-bottom: none; }
+.step-n { width: 24px; height: 24px; border-radius: 50%; background: var(--orange); color: white; font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.mat-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.mat-item { background: var(--fond); border: 1px solid #F0E8DC; border-radius: 100px; padding: 4px 12px; font-size: 0.8rem; color: var(--texte); }
+.conseil-box { background: #FFF8DC; border-left: 3px solid var(--jaune); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 0.85rem; color: var(--texte); line-height: 1.6; }
 
-.cta-note { font-size: 0.75rem; color: #B0A89E; margin-top: 1rem; position: relative; z-index: 1; }
+/* EMPTY STATE */
+.empty { text-align: center; padding: 4rem 2rem; display: none; }
+.empty-emoji { font-size: 3rem; margin-bottom: 1rem; }
+.empty h3 { font-family: 'Nunito', sans-serif; font-weight: 800; margin-bottom: 0.5rem; }
+.empty p { font-size: 0.9rem; color: var(--gris); }
 
-/* ══════════════════════════════════
-   FOOTER
-══════════════════════════════════ */
-footer {
-  background: var(--texte);
-  color: rgba(255,255,255,0.5);
-  padding: 2rem clamp(1.5rem, 5vw, 5rem);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.footer-logo { font-family: 'Nunito', sans-serif; font-weight: 900; color: var(--orange); font-size: 1.2rem; }
+/* FOOTER */
+footer { background: var(--texte); color: rgba(255,255,255,0.5); padding: 2rem clamp(1rem, 4vw, 3rem); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; }
+.footer-logo { font-family: 'Nunito', sans-serif; font-weight: 900; color: var(--orange); font-size: 1.1rem; }
 footer p { font-size: 0.78rem; }
-footer a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; }
-footer a:hover { color: var(--orange); }
 
-/* ══════════════════════════════════
-   ANIMATIONS
-══════════════════════════════════ */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.85); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes underlineIn {
-  to { transform: scaleX(1); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.visible { opacity: 1; transform: none; }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { height: 300px; display: none; }
-  .steps-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .step-num-label { font-size: 2rem; }
-  .nav-link { display: none; }
-}
-@media (max-width: 520px) {
-  .cats-grid { grid-template-columns: repeat(2, 1fr); }
-}
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@media (max-width: 480px) { .hero-stats { gap: 1.2rem; } .filter-row-label { min-width: 100%; } }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="logo"><div class="logo-icon">📦</div>Kidbox</div>
-  <div class="nav-right">
-    <a href="#categories" class="nav-link">Activités</a>
-    <a href="#tarifs" class="nav-link">Tarifs</a>
-    <a href="#essai" class="nav-cta">Essai gratuit</a>
-  </div>
+  <a href="#" class="logo"><div class="logo-box">📦</div>Kidbox</a>
+  <div class="nav-badge">✅ 100% gratuit</div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-badge">✨ 100% gratuit pour commencer</div>
-      <h1>Une activité pour vos enfants en <span class="h1-accent">3 clics</span></h1>
-      <p class="hero-desc">Fini les recherches interminables sur Pinterest. Kidbox vous propose en quelques secondes une activité adaptée à l'âge, au temps disponible et au matériel que vous avez.</p>
-      <div class="hero-actions">
-        <a href="#demo" class="btn-orange">Trouver une activité →</a>
-        <a href="#comment" class="btn-ghost">Comment ça marche ?</a>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="float-card fc-main">
-        <div class="fc-emoji">🎨</div>
-        <div class="fc-title">Peinture aux doigts arc-en-ciel</div>
-        <div class="fc-sub">Activité créative · 30 min</div>
-        <div class="fc-tags">
-          <span class="fc-tag t-orange">3-6 ans</span>
-          <span class="fc-tag t-vert">Intérieur</span>
-          <span class="fc-tag t-bleu">Créatif</span>
-        </div>
-      </div>
-      <div class="float-card fc-2">
-        <div style="font-size:1.6rem;margin-bottom:6px">🍪</div>
-        <div class="fc-title" style="font-size:0.85rem">Biscuits rigolos</div>
-        <div class="fc-sub">Cuisine · 45 min</div>
-        <div class="fc-stars">★★★★★</div>
-        <div class="fc-name">Adoré par 284 familles</div>
-      </div>
-      <div class="float-card fc-3">
-        <div style="font-size:1.4rem;margin-bottom:6px">🧩</div>
-        <div class="fc-title" style="font-size:0.85rem">Mémo des animaux</div>
-        <div class="fc-sub">Éducatif · 15 min</div>
-        <div class="fc-tags"><span class="fc-tag t-rose">6-10 ans</span></div>
-      </div>
-    </div>
+  <span class="hero-emoji">🎉</span>
+  <h1>30 activités gratuites<br>pour <span>occuper vos enfants</span></h1>
+  <p class="hero-desc">Parents, nounous, assistantes maternelles — trouvez en 3 clics une activité adaptée à l'âge, au temps disponible et à ce que vous avez à la maison.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num">30</div><div class="hstat-label">activités gratuites</div></div>
+    <div class="hstat"><div class="hstat-num">5</div><div class="hstat-label">catégories</div></div>
+    <div class="hstat"><div class="hstat-num">0€</div><div class="hstat-label">pour toujours</div></div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-band">
-  <div class="stat"><div class="stat-num">300+</div><div class="stat-label">activités disponibles</div></div>
-  <div class="stat"><div class="stat-num">5</div><div class="stat-label">catégories</div></div>
-  <div class="stat"><div class="stat-num">4</div><div class="stat-label">tranches d'âge</div></div>
-  <div class="stat"><div class="stat-num">0€</div><div class="stat-label">pour commencer</div></div>
+<!-- FILTRES -->
+<div class="filters-section">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="Rechercher une activité..." oninput="applyFilters()">
+  </div>
+  <div class="filter-rows">
+    <div class="filter-row">
+      <span class="filter-row-label">Catégorie</span>
+      <div class="pills">
+        <div class="pill pill-all active" onclick="setFilter('cat','all',this)">Toutes</div>
+        <div class="pill" onclick="setFilter('cat','creatif',this)">🎨 Créatif</div>
+        <div class="pill" onclick="setFilter('cat','cuisine',this)">🍳 Cuisine</div>
+        <div class="pill" onclick="setFilter('cat','educatif',this)">🧩 Éducatif</div>
+        <div class="pill" onclick="setFilter('cat','plein_air',this)">🌿 Plein air</div>
+        <div class="pill" onclick="setFilter('cat','imaginaire',this)">📖 Imaginaire</div>
+      </div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-row-label">Âge</span>
+      <div class="pills">
+        <div class="pill pill-all active" onclick="setFilter('age','all',this)">Tous</div>
+        <div class="pill" onclick="setFilter('age','0-3',this)">0–3 ans</div>
+        <div class="pill" onclick="setFilter('age','3-6',this)">3–6 ans</div>
+        <div class="pill" onclick="setFilter('age','6-10',this)">6–10 ans</div>
+        <div class="pill" onclick="setFilter('age','10+',this)">10+ ans</div>
+      </div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-row-label">Durée</span>
+      <div class="pills">
+        <div class="pill pill-all active" onclick="setFilter('duree','all',this)">Toutes</div>
+        <div class="pill" onclick="setFilter('duree','15',this)">≤ 15 min</div>
+        <div class="pill" onclick="setFilter('duree','30',this)">≤ 30 min</div>
+        <div class="pill" onclick="setFilter('duree','45',this)">≤ 45 min</div>
+      </div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-row-label">Lieu</span>
+      <div class="pills">
+        <div class="pill pill-all active" onclick="setFilter('lieu','all',this)">Tous</div>
+        <div class="pill" onclick="setFilter('lieu','interieur',this)">🏠 Intérieur</div>
+        <div class="pill" onclick="setFilter('lieu','exterieur',this)">🌳 Extérieur</div>
+      </div>
+    </div>
+  </div>
+  <div class="results-count"><span id="count">30</span> activité(s) trouvée(s)</div>
 </div>
 
-<!-- COMMENT ÇA MARCHE -->
-<section class="how" id="comment">
-  <div class="blob blob-3"></div>
-  <div class="section-eyebrow reveal">Comment ça marche</div>
-  <h2 class="reveal">Simple comme bonjour — vraiment</h2>
-
-  <div class="steps-grid">
-    <div class="step-card reveal">
-      <div class="step-num-label">1</div>
-      <div class="step-bubble sb-1">🎯</div>
-      <h3>Tu filtres en 10 secondes</h3>
-      <p>Âge de l'enfant, temps disponible, lieu (intérieur ou extérieur), matériel à la maison. Pas besoin de créer un compte.</p>
-    </div>
-    <div class="step-card reveal">
-      <div class="step-num-label">2</div>
-      <div class="step-bubble sb-2">✨</div>
-      <h3>Kidbox suggère 3 idées</h3>
-      <p>Des activités adaptées exactement à votre situation. Avec les étapes détaillées, le matériel exact et le niveau de difficulté.</p>
-    </div>
-    <div class="step-card reveal">
-      <div class="step-num-label">3</div>
-      <div class="step-bubble sb-3">🚀</div>
-      <h3>Tu te lances !</h3>
-      <p>Tout est guidé pas à pas. Sauvegardez vos favorites, notez celles que vous avez faites et partagez avec d'autres parents.</p>
-    </div>
+<!-- ACTIVITÉS -->
+<section class="activities-section">
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">
+    <div class="empty-emoji">🔍</div>
+    <h3>Aucune activité trouvée</h3>
+    <p>Essaie d'autres filtres ou un autre mot-clé.</p>
   </div>
 </section>
 
-<!-- CATÉGORIES -->
-<section class="cats" id="categories">
-  <div class="section-eyebrow reveal">Ce qu'on propose</div>
-  <h2 class="reveal">5 univers d'activités pour tous les moments</h2>
-  <div class="cats-grid">
-    <div class="cat-card cc-1 reveal">
-      <span class="cat-emoji">🎨</span>
-      <h3>Créatif & manuel</h3>
-      <p>Dessin, peinture, collage, origami, bricolage</p>
-    </div>
-    <div class="cat-card cc-2 reveal">
-      <span class="cat-emoji">🧩</span>
-      <h3>Jeux éducatifs</h3>
-      <p>Logique, mémoire, lettres, chiffres</p>
-    </div>
-    <div class="cat-card cc-3 reveal">
-      <span class="cat-emoji">🍳</span>
-      <h3>Cuisine ensemble</h3>
-      <p>Recettes simples, goûters, biscuits</p>
-    </div>
-    <div class="cat-card cc-4 reveal">
-      <span class="cat-emoji">🌿</span>
-      <h3>Plein air & nature</h3>
-      <p>Jardin, chasse au trésor, jeux de cour</p>
-    </div>
-    <div class="cat-card cc-5 reveal">
-      <span class="cat-emoji">📖</span>
-      <h3>Histoires & imaginaire</h3>
-      <p>Jeux de rôle, contes, marionnettes</p>
-    </div>
-  </div>
-</section>
-
-<!-- DÉMO INTERACTIVE -->
-<section class="demo" id="demo">
-  <div class="blob blob-4"></div>
-  <div class="section-eyebrow reveal">Démo</div>
-  <h2 class="reveal" style="color:white">Essayez maintenant — sans inscription</h2>
-
-  <div class="demo-box reveal">
-    <div class="filter-row">
-      <div class="filter-label">Âge de l'enfant</div>
-      <div class="filter-pills">
-        <div class="fpill" onclick="toggle(this,'age')">0–3 ans</div>
-        <div class="fpill on" onclick="toggle(this,'age')">3–6 ans</div>
-        <div class="fpill" onclick="toggle(this,'age')">6–10 ans</div>
-        <div class="fpill" onclick="toggle(this,'age')">10+ ans</div>
-      </div>
-    </div>
-    <div class="filter-row">
-      <div class="filter-label">Temps disponible</div>
-      <div class="filter-pills">
-        <div class="fpill on" onclick="toggle(this,'time')">15 min</div>
-        <div class="fpill" onclick="toggle(this,'time')">30 min</div>
-        <div class="fpill" onclick="toggle(this,'time')">1 heure</div>
-        <div class="fpill" onclick="toggle(this,'time')">Demi-journée</div>
-      </div>
-    </div>
-    <div class="filter-row">
-      <div class="filter-label">Lieu</div>
-      <div class="filter-pills">
-        <div class="fpill on" onclick="toggle(this,'lieu')">🏠 Intérieur</div>
-        <div class="fpill" onclick="toggle(this,'lieu')">🌳 Extérieur</div>
-      </div>
-    </div>
-    <button class="demo-btn" onclick="showResult()">🎲 Trouver une activité !</button>
-
-    <div class="result-card" id="result">
-      <div class="result-emoji">🎨</div>
-      <div class="result-title">Empreintes de mains papillons</div>
-      <div class="result-meta">Créatif · 3–6 ans · 15 min · Intérieur · Peinture + papier</div>
-      <ul class="result-steps">
-        <li><div class="rs-num">1</div><span>Prépare de la peinture dans deux couleurs au choix.</span></li>
-        <li><div class="rs-num">2</div><span>Trempe la paume de la main dans la peinture et appuie sur le papier.</span></li>
-        <li><div class="rs-num">3</div><span>Fais deux empreintes côte à côte en miroir — ce sont les ailes du papillon !</span></li>
-        <li><div class="rs-num">4</div><span>Dessine le corps et les antennes au feutre une fois sec. Admire le résultat 🦋</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- TARIFS -->
-<section class="pricing" id="tarifs">
-  <div class="section-eyebrow reveal">Tarifs</div>
-  <h2 class="reveal">Commencez gratuitement,<br>upgradez quand vous voulez</h2>
-
-  <div class="pricing-grid">
-    <div class="price-card reveal">
-      <div class="price-name">Gratuit</div>
-      <div class="price-amount">0€</div>
-      <div class="price-sub">Pour toujours</div>
-      <ul class="price-features">
-        <li><span class="pf-check">✅</span> 50 activités disponibles</li>
-        <li><span class="pf-check">✅</span> Filtres âge et durée</li>
-        <li><span class="pf-check">✅</span> 1 suggestion IA / jour</li>
-        <li><span class="pf-x">✗</span> Activités illimitées</li>
-        <li><span class="pf-x">✗</span> Favoris & historique</li>
-        <li><span class="pf-x">✗</span> Planning hebdomadaire</li>
-      </ul>
-      <a href="#essai" class="price-btn price-btn-ghost">Commencer gratuitement</a>
-    </div>
-
-    <div class="price-card featured reveal">
-      <div class="featured-badge">⭐ Le plus populaire</div>
-      <div class="price-name" style="opacity:0.7">Premium</div>
-      <div class="price-amount">4,99€</div>
-      <div class="price-sub">/ mois · ou 39€/an</div>
-      <ul class="price-features">
-        <li><span class="pf-check">✅</span> 300+ activités illimitées</li>
-        <li><span class="pf-check">✅</span> Suggestions IA illimitées</li>
-        <li><span class="pf-check">✅</span> Favoris & historique</li>
-        <li><span class="pf-check">✅</span> Planning hebdomadaire</li>
-        <li><span class="pf-check">✅</span> Fiches PDF imprimables</li>
-        <li><span class="pf-check">✅</span> Mode hors-ligne</li>
-      </ul>
-      <a href="#essai" class="price-btn price-btn-white">Essayer 14 jours gratuits</a>
-    </div>
-
-    <div class="price-card reveal">
-      <div class="price-name">Pro — Nounous</div>
-      <div class="price-amount">12€</div>
-      <div class="price-sub">/ mois · jusqu'à 15 enfants</div>
-      <ul class="price-features">
-        <li><span class="pf-check">✅</span> Tout le plan Premium</li>
-        <li><span class="pf-check">✅</span> Activités multi-âges</li>
-        <li><span class="pf-check">✅</span> Profils par enfant</li>
-        <li><span class="pf-check">✅</span> Rapport activités mensuel</li>
-        <li><span class="pf-check">✅</span> Support prioritaire</li>
-        <li><span class="pf-check">✅</span> Facture pour CAF</li>
-      </ul>
-      <a href="#essai" class="price-btn price-btn-ghost">Essayer 14 jours gratuits</a>
-    </div>
-  </div>
-</section>
-
-<!-- TÉMOIGNAGES -->
-<section class="testimonials">
-  <div class="section-eyebrow reveal">Témoignages</div>
-  <h2 class="reveal">Ce que disent les parents<br>et les nounous</h2>
-
-  <div class="testi-grid">
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">« Je cherchais toujours des idées le dimanche après-midi. Maintenant j'ouvre Kidbox et en 30 secondes on a une activité. Mon fils de 5 ans adore ! »</p>
-      <div class="testi-author">
-        <div class="testi-avatar av-1">👩</div>
-        <div><div class="testi-name">Sophie M.</div><div class="testi-role">Maman de 2 enfants · Paris</div></div>
-      </div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">« En tant qu'assistante maternelle, je garde des enfants de 2 à 6 ans. Les activités multi-âges de Kidbox Pro m'ont changé la vie. »</p>
-      <div class="testi-author">
-        <div class="testi-avatar av-2">👩‍🏫</div>
-        <div><div class="testi-name">Fatima K.</div><div class="testi-role">Assistante maternelle agréée · Lyon</div></div>
-      </div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">« La fonction IA est bluffante. J'ai tapé "il pleut, j'ai du riz et des boîtes" et elle m'a sorti une activité géniale pour mon fils de 8 ans. »</p>
-      <div class="testi-author">
-        <div class="testi-avatar av-3">👨</div>
-        <div><div class="testi-name">Thomas B.</div><div class="testi-role">Papa solo · Bordeaux</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta-final" id="essai">
-  <div class="blob blob-5"></div>
-  <div class="blob blob-6"></div>
-  <h2>Prêt·e à ne plus jamais<br>manquer d'idées ? 🎉</h2>
-  <p>Rejoignez des centaines de parents et nounous qui ont déjà trouvé leur activité du jour avec Kidbox.</p>
-  <div class="email-form">
-    <input type="email" placeholder="votre@email.fr">
-    <button onclick="this.textContent='Envoyé ✓';this.style.background='var(--vert)'">C'est parti !</button>
-  </div>
-  <p class="cta-note">Gratuit, sans carte bancaire. Désabonnement en un clic.</p>
-</section>
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">📦 Kidbox</div>
   <p>Créé avec ❤️ par Hajar El Hizabri</p>
-  <div style="display:flex;gap:1.5rem">
-    <a href="mailto:hajarbenzekri@gmail.com">Contact</a>
-    <a href="#">Mentions légales</a>
-    <a href="#">Instagram</a>
-  </div>
+  <p>hajarbenzekri@gmail.com</p>
 </footer>
 
 <script>
-// Scroll reveal
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100);
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+const ACTIVITES = [{"id":1,"titre":"Peinture aux doigts arc-en-ciel","emoji":"🌈","categorie":"creatif","age_min":2,"age_max":6,"duree":20,"lieu":"interieur","materiel":["peinture lavable","feuille blanche","tablier"],"etapes":["Prépare la table avec un plastique ou des journaux.","Verse les couleurs dans des petites assiettes.","L'enfant trempe ses doigts et crée des lignes colorées.","Laisse sécher 30 minutes à plat."],"conseil":"Ajoute du liquide vaisselle à la peinture pour qu'elle parte plus facilement.","tags":["calme","seul","créatif"]},{"id":2,"titre":"Biscuits en forme d'étoiles","emoji":"⭐","categorie":"cuisine","age_min":3,"age_max":10,"duree":45,"lieu":"interieur","materiel":["200g farine","100g beurre mou","60g sucre","1 œuf","emporte-pièces"],"etapes":["Mélange farine, beurre et sucre du bout des doigts.","Ajoute l'œuf et forme une boule.","Étale la pâte sur 5mm d'épaisseur.","Découpe des formes avec les emporte-pièces.","Enfourne 12 min à 180°C. Laisse refroidir avant de déguster !"],"conseil":"L'enfant peut décorer avec du sucre glace coloré une fois les biscuits refroidis.","tags":["groupe","éducatif","cuisine"]},{"id":3,"titre":"Chasse aux trésors nature","emoji":"🌿","categorie":"plein_air","age_min":3,"age_max":10,"duree":30,"lieu":"exterieur","materiel":["petit sac","liste imprimée"],"etapes":["Prépare une liste : feuille ronde, caillou blanc, fleur, brindille, plume...","Donne un sac à chaque enfant.","C'est parti pour la chasse dans le jardin ou le parc !","À la fin, chacun présente ses trouvailles."],"conseil":"Pour les plus grands, ajoute des indices dessinés plutôt qu'une liste écrite.","tags":["extérieur","groupe","défouloir"]},{"id":4,"titre":"Jeu de Kim des objets","emoji":"🧠","categorie":"educatif","age_min":4,"age_max":12,"duree":15,"lieu":"interieur","materiel":["10 objets du quotidien","torchon"],"etapes":["Pose 10 objets sur une table.","L'enfant les observe et mémorise pendant 30 secondes.","Cache la table avec un torchon, retire 1 objet discrètement.","Soulève le torchon — lequel a disparu ?"],"conseil":"Commence avec 5 objets pour les petits, monte à 15 pour les grands.","tags":["calme","éducatif","groupe"]},{"id":5,"titre":"Origami grenouille sauteuse","emoji":"🐸","categorie":"creatif","age_min":6,"age_max":12,"duree":20,"lieu":"interieur","materiel":["feuille de papier carrée","feutres"],"etapes":["Plie la feuille en deux dans les deux sens pour marquer le centre.","Plie les coins vers le centre pour former un triangle.","Replie la base vers le haut deux fois pour faire les pattes.","Dessine les yeux — appuie sur le dos pour la faire sauter !"],"conseil":"Le papier cartonné donne de meilleures grenouilles sauteuses.","tags":["calme","seul","créatif"]},{"id":6,"titre":"Théâtre de marionnettes chaussettes","emoji":"🎭","categorie":"imaginaire","age_min":3,"age_max":8,"duree":40,"lieu":"interieur","materiel":["vieilles chaussettes","boutons","colle","feutres","laine"],"etapes":["Enfile une chaussette sur la main.","Colle deux boutons pour les yeux.","Ajoute des cheveux en laine et dessine une bouche.","Installe un rideau entre deux chaises — le spectacle peut commencer !"],"conseil":"Prépare une petite histoire simple avant de commencer pour guider l'enfant.","tags":["groupe","imaginaire","créatif"]},{"id":7,"titre":"Slime maison sans borax","emoji":"🟢","categorie":"creatif","age_min":5,"age_max":12,"duree":20,"lieu":"interieur","materiel":["colle blanche 100ml","lessive liquide 1 cuillère","colorant alimentaire"],"etapes":["Verse la colle blanche dans un bol.","Ajoute quelques gouttes de colorant alimentaire.","Incorpore la lessive cuillère par cuillère en mélangeant.","Pétris jusqu'à obtenir la texture désirée — ni trop collant, ni trop dur."],"conseil":"Conserve dans une boîte hermétique, le slime tient 1 semaine.","tags":["sensori","seul","créatif"]},{"id":8,"titre":"Obstacle course maison","emoji":"🏃","categorie":"plein_air","age_min":3,"age_max":10,"duree":30,"lieu":"interieur","materiel":["coussins","chaises","ruban adhésif","ballons"],"etapes":["Crée un tunnel avec des chaises recouvertes d'une couverture.","Trace des lignes au sol avec du ruban — à ne pas dépasser.","Place des coussins à sauter d'un à l'autre.","Chronomètre chaque enfant et compare les temps !"],"conseil":"Adapte la difficulté selon l'âge — ramper pour les petits, équilibre pour les grands.","tags":["défouloir","groupe","intérieur"]},{"id":9,"titre":"Jardinage en pot","emoji":"🌱","categorie":"plein_air","age_min":2,"age_max":10,"duree":30,"lieu":"exterieur","materiel":["pot","terreau","graines (radis, herbes)","arrosoir"],"etapes":["Remplis le pot de terreau aux 3/4.","L'enfant fait de petits trous avec le doigt.","Dépose 2-3 graines dans chaque trou et recouvre.","Arrose doucement et place au soleil — observe la pousse chaque jour !"],"conseil":"Les radis poussent en 3 semaines — parfaits pour voir rapidement le résultat.","tags":["calme","éducatif","nature"]},{"id":10,"titre":"Carte postale pour un grand-parent","emoji":"💌","categorie":"creatif","age_min":3,"age_max":10,"duree":20,"lieu":"interieur","materiel":["carton épais","feutres","crayons de couleur","colle","papier collant coloré"],"etapes":["Découpe un rectangle de carton — c'est la carte.","L'enfant dessine ce qu'il veut sur le recto.","Au verso, écris (ou fais dicter) un message.","Envoie par la poste — la joie du destinataire sera la plus belle récompense !"],"conseil":"Ajoute des gommettes ou des confettis collés pour décorer.","tags":["calme","seul","émotionnel"]},{"id":11,"titre":"Expérience volcan bicarbonate","emoji":"🌋","categorie":"educatif","age_min":4,"age_max":12,"duree":20,"lieu":"interieur","materiel":["bicarbonate de soude","vinaigre blanc","colorant rouge","bol"],"etapes":["Pose le bol sur un plateau (ça déborde !).","Verse 3 cuillères à soupe de bicarbonate dans le bol.","Ajoute quelques gouttes de colorant rouge.","Verse le vinaigre d'un coup — le volcan explose !"],"conseil":"Explique la réaction chimique simplement : le bicarbonate et le vinaigre font des bulles de gaz.","tags":["éducatif","sciences","groupe"]},{"id":12,"titre":"Lecture de conte inventé","emoji":"📖","categorie":"imaginaire","age_min":2,"age_max":8,"duree":20,"lieu":"interieur","materiel":["aucun"],"etapes":["Choisis ensemble un héros (animal, enfant, robot...).","Demande à l'enfant : où il vit ? Quel est son problème ?","Construis l'histoire en posant des questions — l'enfant décide.","Termine toujours par une fin heureuse et un résumé de l'aventure."],"conseil":"Note l'histoire pour la relire une autre fois — l'enfant sera fier !","tags":["calme","imaginaire","langage"]},{"id":13,"titre":"Mobile en branches et laine","emoji":"🎐","categorie":"creatif","age_min":4,"age_max":10,"duree":35,"lieu":"interieur","materiel":["branche fine","laine colorée","feuilles séchées","ciseaux"],"etapes":["Ramasse une jolie branche droite lors d'une promenade.","Enroule de la laine colorée sur la branche.","Accroche des feuilles séchées, cailloux ou dessins avec du fil.","Suspends le mobile à la fenêtre."],"conseil":"Plastifie les dessins accrochés pour qu'ils durent plus longtemps.","tags":["calme","nature","créatif"]},{"id":14,"titre":"Smoothie fruité à inventer","emoji":"🥤","categorie":"cuisine","age_min":3,"age_max":12,"duree":15,"lieu":"interieur","materiel":["fruits variés","yaourt ou lait","mixeur","verres"],"etapes":["L'enfant choisit 2 ou 3 fruits parmi ce qu'il y a.","Coupe les fruits (adulte) et mets-les dans le mixeur.","Ajoute un yaourt ou un peu de lait.","Mixe, verse dans un verre et décore avec une paille !"],"conseil":"L'enfant peut coller une étiquette avec le nom de son invention sur le verre.","tags":["cuisine","créatif","autonomie"]},{"id":15,"titre":"Jeu de société inventé","emoji":"🎲","categorie":"educatif","age_min":5,"age_max":12,"duree":40,"lieu":"interieur","materiel":["carton","feutres","dé","pions (pièces de monnaie)"],"etapes":["Dessine un plateau avec des cases sur le carton.","L'enfant invente les règles : avance, recule, passe ton tour...","Écris les règles sur une feuille.","Jouez tous ensemble à son jeu !"],"conseil":"Prends en photo le plateau pour garder une trace de sa création.","tags":["éducatif","groupe","créatif"]},{"id":16,"titre":"Bulles de savon géantes","emoji":"🫧","categorie":"plein_air","age_min":2,"age_max":10,"duree":20,"lieu":"exterieur","materiel":["liquide vaisselle","glycérine (pharmacie)","eau","fil ou paille"],"etapes":["Mélange 6 volumes d'eau, 1 volume de liquide vaisselle, 1 volume de glycérine.","Laisse reposer 1h (les bulles seront meilleures).","Trempe le fil ou la paille et souffle doucement.","Essaie de faire la bulle la plus grande possible !"],"conseil":"Par temps humide, les bulles durent plus longtemps.","tags":["extérieur","défouloir","sciences"]},{"id":17,"titre":"Portrait de famille dessiné","emoji":"👨‍👩‍👧","categorie":"creatif","age_min":3,"age_max":10,"duree":25,"lieu":"interieur","materiel":["feuille blanche","crayons de couleur","feutres"],"etapes":["Demande à l'enfant de dessiner chaque membre de la famille.","Pose des questions : de quelle couleur sont ses yeux ? Ses cheveux ?","L'enfant choisit la tenue de chaque personnage.","Écris les prénoms sous chaque personnage — offre le dessin !"],"conseil":"Encadre le résultat, même simplement — l'enfant sera très fier.","tags":["calme","émotionnel","seul"]},{"id":18,"titre":"Tri des couleurs et formes","emoji":"🔵","categorie":"educatif","age_min":1,"age_max":4,"duree":15,"lieu":"interieur","materiel":["objets colorés du quotidien","boîtes ou assiettes"],"etapes":["Réunis des objets de couleurs variées sur le sol.","Pose une assiette rouge, une bleue, une jaune.","Montre à l'enfant comment trier par couleur.","Laisse-le continuer seul — félicite chaque bonne action !"],"conseil":"Pour les 1-2 ans, commence avec seulement 2 couleurs.","tags":["éducatif","bébé","autonomie"]},{"id":19,"titre":"Mini-spectacle de danse","emoji":"💃","categorie":"imaginaire","age_min":2,"age_max":10,"duree":30,"lieu":"interieur","materiel":["musique","foulards ou rubans","enceinte ou téléphone"],"etapes":["Choisis une chanson que l'enfant aime.","Invente ensemble 3 mouvements simples.","Répète la chorégraphie 2-3 fois.","Le grand spectacle ! Filme et montre à la famille."],"conseil":"Les foulards légers ajoutent du mouvement et du glamour à la danse.","tags":["défouloir","groupe","imaginaire"]},{"id":20,"titre":"Tampons avec légumes","emoji":"🥦","categorie":"creatif","age_min":2,"age_max":7,"duree":25,"lieu":"interieur","materiel":["pomme de terre","poivron","peinture","feuille","couteau (adulte)"],"etapes":["Coupe les légumes en deux (adulte uniquement).","Creuse un motif simple dans la pomme de terre si tu veux.","Trempe le légume dans la peinture.","Tamponne sur la feuille pour créer des motifs !"],"conseil":"Un épi de maïs roulé dans la peinture crée des textures superbes.","tags":["calme","créatif","nature"]},{"id":21,"titre":"Yoga des animaux","emoji":"🧘","categorie":"educatif","age_min":3,"age_max":8,"duree":20,"lieu":"interieur","materiel":["tapis de sol ou serviette"],"etapes":["Le chat : à quatre pattes, dos rond puis dos creux en soufflant.","Le chien : mains et pieds au sol, fesses en l'air.","L'arbre : debout sur un pied, l'autre contre le genou, bras en l'air.","L'enfant invente sa propre pose d'animal !"],"conseil":"Fais les poses avec l'enfant — il sera plus motivé si tu participes.","tags":["calme","corps","éducatif"]},{"id":22,"titre":"Aquarium en bocal","emoji":"🐠","categorie":"creatif","age_min":4,"age_max":10,"duree":30,"lieu":"interieur","materiel":["bocal en verre","sable coloré","coquillages","poissons en papier","eau"],"etapes":["Verse du sable coloré au fond du bocal.","Ajoute des coquillages et des petits cailloux.","Dessine et découpe des poissons en papier plastifié.","Accroche les poissons avec du fil transparent à l'intérieur."],"conseil":"Utilise du papier plastifié pour que les poissons résistent à l'humidité.","tags":["calme","créatif","seul"]},{"id":23,"titre":"Devinettes animaux","emoji":"🦁","categorie":"imaginaire","age_min":3,"age_max":8,"duree":15,"lieu":"interieur","materiel":["aucun"],"etapes":["Un joueur pense à un animal sans le dire.","Les autres posent des questions auxquelles on répond oui/non.","« Est-ce que ça vit dans l'eau ? Est-ce que ça a des rayures ? »","Celui qui trouve choisit le prochain animal !"],"conseil":"Pour les plus petits, montre une image de l'animal avant qu'ils le fassent deviner.","tags":["langage","groupe","éducatif"]},{"id":24,"titre":"Pistolet à eau fait maison","emoji":"💦","categorie":"plein_air","age_min":3,"age_max":10,"duree":30,"lieu":"exterieur","materiel":["bouteille plastique","paille","eau"],"etapes":["Perce un petit trou dans le bouchon de la bouteille.","Remplis la bouteille d'eau.","Visse le bouchon et presse la bouteille pour envoyer un jet.","Bataille d'eau !"],"conseil":"Ajoute du colorant alimentaire pour des jets colorés — ça ne tache pas.","tags":["extérieur","défouloir","groupe"]},{"id":25,"titre":"Livre pop-up fait main","emoji":"📚","categorie":"creatif","age_min":5,"age_max":12,"duree":45,"lieu":"interieur","materiel":["feuilles épaisses","ciseaux","colle","feutres"],"etapes":["Plie une feuille en deux — c'est une page.","Fais 2 petites coupes parallèles au pli de 3cm.","Replie la languette vers l'intérieur — voilà le pop-up !","Dessine un personnage sur la languette et décore la page."],"conseil":"Assemble plusieurs pages pour créer un vrai livre avec une histoire.","tags":["calme","créatif","langage"]},{"id":26,"titre":"Jeu du chef cuisinier","emoji":"👨‍🍳","categorie":"cuisine","age_min":4,"age_max":10,"duree":30,"lieu":"interieur","materiel":["pain de mie","fromage","tomate","concombre","fromage frais"],"etapes":["Dispose les ingrédients dans des petits bols.","Chaque enfant crée sa propre tartine décorée.","Défi : faire un visage avec les ingrédients.","On mange sa création — c'est toujours meilleur quand on l'a fait soi-même !"],"conseil":"Ajoute un tablier et une toque en papier pour l'ambiance chef cuisinier.","tags":["cuisine","autonomie","groupe"]},{"id":27,"titre":"Cartographie du quartier","emoji":"🗺️","categorie":"educatif","age_min":5,"age_max":12,"duree":40,"lieu":"interieur","materiel":["grande feuille","feutres","règle"],"etapes":["Demande à l'enfant de dessiner sa maison au centre.","Ajoute les rues autour — l'école, le parc, la boulangerie...","Place les points importants avec des dessins.","Affiche la carte dans sa chambre !"],"conseil":"Fais une vraie promenade d'observation avant pour qu'il mémorise le quartier.","tags":["éducatif","calme","seul"]},{"id":28,"titre":"Bowling de bouteilles","emoji":"🎳","categorie":"plein_air","age_min":2,"age_max":10,"duree":25,"lieu":"interieur","materiel":["6 bouteilles plastiques vides","balle souple","sable ou eau pour lester"],"etapes":["Remplis légèrement les bouteilles d'eau pour qu'elles tiennent debout.","Dispose-les en triangle comme de vrais quilles.","Trace une ligne de départ avec du ruban.","Chacun joue 2 lancers — compte les points !"],"conseil":"Décore les bouteilles avec des gommettes pour les rendre plus jolies.","tags":["défouloir","groupe","intérieur"]},{"id":29,"titre":"Herbier de saison","emoji":"🍂","categorie":"plein_air","age_min":4,"age_max":12,"duree":45,"lieu":"exterieur","materiel":["feuilles ramassées","papier absorbant","livres lourds","colle","cahier"],"etapes":["Ramasse des feuilles, fleurs et herbes variées lors d'une promenade.","Pose-les entre deux feuilles de papier absorbant.","Pose des livres lourds dessus pendant 48h pour les aplatir.","Colle dans un cahier et note le nom de chaque plante."],"conseil":"Cherche ensemble les noms des plantes sur internet — c'est un beau moment de découverte.","tags":["nature","éducatif","calme"]},{"id":30,"titre":"Photographie créative","emoji":"📸","categorie":"creatif","age_min":5,"age_max":12,"duree":30,"lieu":"interieur","materiel":["téléphone ou tablette","objets du quotidien"],"etapes":["Donne le téléphone à l'enfant et propose un thème : rouge, rond, doux...","Il part dans la maison chercher et photographier des objets du thème.","Regardez les photos ensemble et choisissez la plus belle.","Crée un petit album photo numérique avec ses meilleures photos."],"conseil":"Montre-lui des techniques simples : zoom, cadrage, lumière naturelle.","tags":["créatif","autonomie","seul"]}];
 
-// Filtre pills (toggle dans groupe)
-function toggle(el, group) {
-  document.querySelectorAll(`.fpill`).forEach(p => {
-    if (p.dataset.group === group || !group) return;
-  });
-  // Simple toggle on/off dans le même row
-  const row = el.closest('.filter-row');
-  row.querySelectorAll('.fpill').forEach(p => p.classList.remove('on'));
-  el.classList.add('on');
+// État des filtres
+const filters = { cat: 'all', age: 'all', duree: 'all', lieu: 'all' };
+
+const CAT_LABELS = { creatif:'Créatif', cuisine:'Cuisine', educatif:'Éducatif', plein_air:'Plein air', imaginaire:'Imaginaire' };
+
+function ageLabel(min, max) {
+  if (max <= 3) return '0–3 ans';
+  if (max <= 6) return '3–6 ans';
+  if (max <= 10) return '6–10 ans';
+  return '6–12 ans';
 }
 
-// Démo résultat
-const activities = [
-  { emoji:'🎨', title:'Empreintes de mains papillons', meta:'Créatif · 3–6 ans · 15 min · Intérieur', steps:['Prépare de la peinture dans deux couleurs.','Trempe la paume et appuie sur le papier.','Fais deux empreintes en miroir — ce sont les ailes !','Dessine le corps et les antennes au feutre. 🦋'] },
-  { emoji:'🧩', title:'Jeu de Kim des objets', meta:'Éducatif · 3–10 ans · 15 min · Intérieur', steps:['Pose 10 objets du quotidien sur une table.','L\'enfant les regarde et les mémorise.','Cache la table avec un torchon, retire 1 objet.','Révèle la table — lequel a disparu ? 🤔'] },
-  { emoji:'🍪', title:'Biscuits en forme d\'étoiles', meta:'Cuisine · 3–6 ans · 30 min · Intérieur', steps:['Mélange 200g farine, 100g beurre, 60g sucre.','Forme une boule et étale la pâte.','Découpe des formes avec des emporte-pièces.','Enfourne 12 min à 180°C. Laisse refroidir avant de déguster !'] },
-  { emoji:'🌿', title:'Chasse aux trésors naturels', meta:'Nature · Tous âges · 30 min · Extérieur', steps:['Prépare une liste : feuille ronde, caillou blanc, fleur, brindille...','Donne un petit sac à chaque enfant.','C\'est parti pour la chasse !','À la fin, chacun présente ses trouvailles.'] },
-];
-let idx = 0;
-function showResult() {
-  const a = activities[idx % activities.length]; idx++;
-  const r = document.getElementById('result');
-  r.innerHTML = `<div class="result-emoji">${a.emoji}</div><div class="result-title">${a.title}</div><div class="result-meta">${a.meta}</div><ul class="result-steps">${a.steps.map((s,i)=>`<li><div class="rs-num">${i+1}</div><span>${s}</span></li>`).join('')}</ul>`;
-  r.classList.remove('show');
-  requestAnimationFrame(() => r.classList.add('show'));
+function buildGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  ACTIVITES.forEach(a => {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.dataset.id = a.id;
+    div.dataset.cat = a.categorie;
+    div.dataset.ageMin = a.age_min;
+    div.dataset.ageMax = a.age_max;
+    div.dataset.duree = a.duree;
+    div.dataset.lieu = a.lieu;
+    div.dataset.search = (a.titre + ' ' + a.tags.join(' ') + ' ' + a.materiel.join(' ')).toLowerCase();
+    div.innerHTML = `
+      <div class="card-top">
+        <span class="card-emoji">${a.emoji}</span>
+        <div class="card-meta">
+          <div class="card-titre">${a.titre}</div>
+          <div class="card-info">⏱ ${a.duree} min · 👶 ${a.age_min}–${a.age_max} ans · ${a.lieu === 'interieur' ? '🏠' : '🌳'}</div>
+        </div>
+      </div>
+      <div class="card-tags">
+        <span class="ctag ctag-${a.categorie}">${CAT_LABELS[a.categorie]}</span>
+      </div>
+      <div class="card-materiel"><strong>Matériel :</strong> ${a.materiel.slice(0,3).join(', ')}${a.materiel.length > 3 ? '...' : ''}</div>
+      <button class="card-btn" onclick="openModal(${a.id})">Voir l'activité complète →</button>
+    `;
+    grid.appendChild(div);
+  });
 }
+
+function setFilter(type, val, el) {
+  filters[type] = val;
+  el.closest('.pills').querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = document.getElementById('search').value.toLowerCase();
+  let visible = 0;
+  document.querySelectorAll('.card').forEach(card => {
+    const catOk = filters.cat === 'all' || card.dataset.cat === filters.cat;
+    const ageMin = parseInt(card.dataset.ageMin);
+    const ageMax = parseInt(card.dataset.ageMax);
+    const ageOk = filters.age === 'all' ||
+      (filters.age === '0-3' && ageMin <= 3) ||
+      (filters.age === '3-6' && ageMin <= 6 && ageMax >= 3) ||
+      (filters.age === '6-10' && ageMin <= 10 && ageMax >= 6) ||
+      (filters.age === '10+' && ageMax >= 10);
+    const dureeOk = filters.duree === 'all' || parseInt(card.dataset.duree) <= parseInt(filters.duree);
+    const lieuOk = filters.lieu === 'all' || card.dataset.lieu === filters.lieu;
+    const searchOk = !q || card.dataset.search.includes(q);
+    const show = catOk && ageOk && dureeOk && lieuOk && searchOk;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  document.getElementById('count').textContent = visible;
+  document.getElementById('empty').style.display = visible === 0 ? 'block' : 'none';
+}
+
+function openModal(id) {
+  const a = ACTIVITES.find(x => x.id === id);
+  if (!a) return;
+  const matNone = a.materiel.length === 1 && a.materiel[0] === 'aucun';
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-header">
+      <div class="modal-emoji">${a.emoji}</div>
+      <div>
+        <div class="modal-title">${a.titre}</div>
+        <div class="modal-subtitle">⏱ ${a.duree} min · 👶 ${a.age_min}–${a.age_max} ans · ${a.lieu === 'interieur' ? '🏠 Intérieur' : '🌳 Extérieur'} · ${CAT_LABELS[a.categorie]}</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    ${!matNone ? `<div class="modal-section">
+      <div class="modal-section-title">Ce qu'il faut</div>
+      <div class="mat-list">${a.materiel.map(m => `<span class="mat-item">📦 ${m}</span>`).join('')}</div>
+    </div>` : ''}
+    <div class="modal-section">
+      <div class="modal-section-title">Les étapes</div>
+      <ul class="steps-list">${a.etapes.map((e,i) => `<li><div class="step-n">${i+1}</div><span>${e}</span></li>`).join('')}</ul>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">💡 Conseil</div>
+      <div class="conseil-box">${a.conseil}</div>
+    </div>
+  `;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modal-overlay')) return;
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+buildGrid();
 </script>
 </body>
 </html>
