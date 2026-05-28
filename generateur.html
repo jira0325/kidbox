@@ -306,25 +306,12 @@ Règles absolues :
 - Réponds UNIQUEMENT avec le JSON, rien d'autre`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': window.ANTHROPIC_KEY,
-        'anthropic-version': '2023-06-01'
-        },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: systemPrompt,
-        messages: [{ role: 'user', content: `Génère une activité pour cette situation : ${contexte}` }]
-      })
-    });
-
-    const data = await res.json();
-    const text = data.content?.[0]?.text || '';
-    const clean = text.replace(/```json|```/g, '').trim();
-    const activite = JSON.parse(clean);
+    const res = await fetch('/.netlify/functions/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: `Génère une activité pour cette situation : ${contexte}` })
+        });
+    const activite = await res.json();
 
     stopLoading();
     afficherResultat(activite, contexte);
