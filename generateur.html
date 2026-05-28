@@ -219,6 +219,10 @@ body { font-family: 'Cabinet Grotesk', sans-serif; background: var(--fond); colo
 </div>
 
 <script>
+  window.ANTHROPIC_KEY = prompt("🔑 Entre ta clé API Anthropic pour activer le générateur :");
+</script>
+
+<script>
 // ── Chips ──
 function toggleChip(el) { el.classList.toggle('on'); }
 
@@ -306,7 +310,7 @@ Règles absolues :
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': 'KIDBOX_API_KEY',
+        'x-api-key': window.ANTHROPIC_KEY,
         'anthropic-version': '2023-06-01'
         },
       body: JSON.stringify({
@@ -399,6 +403,9 @@ document.getElementById('prompt').addEventListener('keydown', e => {
 const printStyle = document.createElement('style');
 printStyle.textContent = `@media print { body > *:not(.gen-section) { display: none; } .gen-box > *:not(.gen-result) { display: none !important; } .result-actions { display: none; } .gen-section { max-width: 100%; } }`;
 document.head.appendChild(printStyle);
+
+
+
 </script>
 </body>
 </html>
