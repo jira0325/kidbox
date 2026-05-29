@@ -15,7 +15,7 @@ exports.handler = async function(event) {
     const { prompt } = JSON.parse(event.body);
 
     const requestBody = JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-haiku-4-5-20251001',
       max_tokens: 1000,
       system: `Tu es Kidbox, un assistant spécialisé en activités pour enfants.
 Génère UNE activité adaptée à la situation décrite.
